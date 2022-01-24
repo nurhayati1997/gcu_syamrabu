@@ -117,7 +117,7 @@
           <!-- Nav items -->
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="<?= site_url('operator') ?>">
+              <a class="nav-link" href="<?= site_url('operator_gcu') ?>">
                 <i class="ni ni-circle-08  text-primary"></i>
                 <span class="nav-link-text">Data Permintaan</span>
               </a>

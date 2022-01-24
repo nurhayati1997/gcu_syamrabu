@@ -15,6 +15,7 @@
               </ol>
             </nav>
           </div>
+          
           <!-- <div class="col-lg-6 col-5 text-right">
             <a href="#" class="btn btn-sm btn-neutral">New</a>
             <a href="#" class="btn btn-sm btn-neutral">Filters</a>
@@ -101,6 +102,33 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modalCetak" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header no-bd">
+          <h5 class="modal-title">
+            <span class="fw-mediumbold">
+              Cetak Data</span>
+            <!-- <span class="fw-light">
+              User
+            </span> -->
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="teksCetak"></p>
+          <input type="hidden" id="id_cetak" name="id_cetak" />
+        </div>
+        <div class="modal-footer no-bd">
+          <button type="button" id="cetak" onClick="cetak()" class="btn btn-primary">Cetak</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -131,6 +159,10 @@
 </div>
 
 <script>
+  // $(document).ready(function() {
+  //   //  add_list();
+  //   tampilkan();
+  // }); 
   tampilkan();
 
   function tampilkan(){
@@ -146,7 +178,8 @@
             baris += '<tr>'
             baris += '<td><div style="cursor:pointer;" title="hapus?" class="badge badge-danger" id="hapus' + data[i].id + '" onClick="tryHapus(' + data[i].id+ ')"><i class="fa fa-times"></i></div>'
             baris += ' <div style="cursor:pointer;" title="edit?" class="badge badge-info" id="edit' + data[i].id + '" onClick="tryEdit(' + data[i].id+ ')"><i class="fa fa-edit"></i></div>'
-            baris += ' <div style="cursor:pointer;" title="Cetak?" class="badge badge-success" id="cetak' + data[i].id + '" onClick="tryEdit(' + data[i].id+ ')"><i class="fa fa-print"></i></div>'
+            baris += ' <div style="cursor:pointer;" title="Cetak?" class="badge badge-success" id="cetak' + data[i].id + '" onClick="tryCetak(' + data[i].id+ ')"><i class="fa fa-print"></i></div>'
+            // baris += ' <div style="cursor:pointer;" title="Cetak?" class="badge badge-success" id="cetak' + data[i].id + '" onClick="send_form()"><i class="fa fa-print"></i></div>'
             baris += '<td>' + (i + 1) + '</td>'
             baris += '<td>' + data[i].tgl_daftar_gcu + '</td>'
             baris += '<td>' + data[i].nama + '</td>'
@@ -168,66 +201,56 @@
       });
   }
 
- 
 
 
+  function tryCetak(id) {
+    $("#cetak" + id).html('<i class="fas fa-spinner fa-pulse"></i>')
+    $.ajax({
+      url: 'operator_gcu/dataById',
+      method: 'post',
+      data: "target=gcu_syamrabu&id=" + id,
+      dataType: 'json',
+      success: function(data) {
+        $("#id_cetak").val(id)
+        $("#teksCetak").html("apakah anda yakin ingin Mencetak  dengan nama '" + data.nama + "' ?")
 
-  // function tryTambah() {
-  //   $("#no_antrian").val("")
-  //   $("#no_rm").val("")
-  //   $("#nama").val("")
-  //   $("#poli").val("")
-  //   $("#jenis_pasien").val("")
-  //   $("#status").val("")
-  //   $("#modalTambah").modal('show')
-  //   $('#pesan_error_tambah').html("")
-  // }
+        $("#cetak" + id).html('<i class="fa fa-times"></i>')
+      }
+    });
+    $("#modalCetak").modal('show')
+  }
 
-  // function tambah() {
-  //   $("#tombolTambah").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
-  //   var no_antrian = $("#no_antrian").val()
-  //   var no_rm = $("#no_rm").val()
-  //   var nama = $("#nama").val()
-  //   var poli = $("#poli").val()
-  //   var jenis_pasien = $("#jenis_pasien").val()
-  //   var status = $("#status").val()
-  //   // if (rule == null) {
-  //   //   rule = 0;
-  //   // }
-  //   $.ajax({
-  //     url: 'operator/tambah_data',
-  //     method: 'post',
-  //     data: {
-  //       no_antrian: no_antrian,
-  //       no_rm: no_rm,
-  //       nama: nama,
-  //       poli: poli,
-  //       jenis_pasien: jenis_pasien,
-  //       status: status
-  //     },
-  //     dataType: 'json',
-  //     success: function(data) {
-  //       if (data == "") {
-          
-  //         $("#no_antrian").val("")
-  //         $("#no_rm").val("")
-  //         $("#nama").val("")
-  //         $("#poli").val("")
-  //         $("#jenis_pasien").val("")
-  //         $("#status").val("")
-  //         $('#pesanErroTambah').html("")
-  //       } else {
-  //         // data = data.replace("<p>", "");
-  //         // data = data.replace("</p>", "");
-  //         $('#pesanErrorTambah').html(data)
-  //       }
+  function cetak() {
+    $("#cetak").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
+    var id = $("#id_cetak").val()
+    $.ajax({
+      // url: 'operator_gcu/open_form',
+      url: 'operator_gcu/dataById',
+      method: 'post',
+      data: "target=gcu_syamrabu&id=" + id,
+      dataType: 'json',
+      success: function(data) {
+        
+        $("#id_cetak").val("")
+        $("#teksCetak").html("")
+        $("#modalCetak").modal('hide')
+        $("#Cetak").html('Cetak')
+        window.open(
+              '<?= site_url('operator_gcu/open_form') ?>',
+              '_blank'
+            );
+      }
+    });
+  }
 
-  //       $("#modalTambah").modal('hide');
-  //         tampilkan();
-  //       $("#tombolTambah").html('Tambah')
-  //       // tampilkan();
-  //     }
-  //   });
+  // function printLaporan() {
+  //   $("#linkPrintLaporan").html('<i class="fas fa-spinner fa-pulse"></i> Memproses....')
+  //   var tanggalMulai = formatTanggal($("#tanggalMulai").val())
+  //   var tanggalSelesai = formatTanggal($("#tanggalSelesai").val())
+
+  //   window.open("<?= base_url("laporan_internal/printLaporan?") ?>mulai=" + tanggalMulai + "&selesai=" + tanggalSelesai)
+
+  //   $("#linkPrintLaporan").html('Print Laporan')
   // }
 
   function tryEdit(id) {
@@ -261,7 +284,6 @@
       dataType: 'json',
       success: function(data) {
         if (data == "") {
-         
           $("#idUser").val("")
           $("#nama").val("")
           $('#pesanErrorTambah').html("")

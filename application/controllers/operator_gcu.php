@@ -34,33 +34,45 @@ class operator_gcu extends CI_Controller
 		// echo json_encode($data_antrian);
 		// echo json_encode($this->db_model->get_where("syarefa", ["status" => $nowDate])->result());
 	}
-	// public function tampil()
-	// {
-	// 	$date= date('Y-m-d');
-	// 	$this->db->get_where($table, array ('tgl_input'=> $date));
-	// 	$data_antrian = $this->db_model->ambil_data('syarefa')->result();
-	// 	echo json_encode($data_antrian);
-	// 	// echo json_encode($this->db_model->get_where("syarefa", ["status" => $nowDate])->result());
-	// }
 
-	public function tambah_data()
+	public function cetak()
 	{
-		$data = [
-			"no_antrian" => $this->input->post("no_antrian", TRUE),
-			"no_rm" => $this->input->post("no_rm", TRUE),
-			"nama" => $this->input->post("nama", TRUE),
-			"poli" => $this->input->post("poli", TRUE),
-			"jenis_pasien" => $this->input->post("jenis_pasien", TRUE),
-			"status"=>$this->input->post("status", TRUE)
-		];
-		$this->db_model->insert('syarefa', $data);
-		echo json_encode($data);
+		echo json_encode($this->db_model->get_all("gcu_syamrabu")->result());
 	}
+
+	// public function tambah_data()
+	// {
+	// 	$data = [
+	// 		"no_antrian" => $this->input->post("no_antrian", TRUE),
+	// 		"no_rm" => $this->input->post("no_rm", TRUE),
+	// 		"nama" => $this->input->post("nama", TRUE),
+	// 		"poli" => $this->input->post("poli", TRUE),
+	// 		"jenis_pasien" => $this->input->post("jenis_pasien", TRUE),
+	// 		"status"=>$this->input->post("status", TRUE)
+	// 	];
+	// 	$this->db_model->insert('syarefa', $data);
+	// 	echo json_encode($data);
+	// }
 
 	public function dataById()
 	{
 		echo json_encode($this->db_model->get_where($this->input->post("target"), ["id" => $this->input->post('id', TRUE)])->row_array());
 	}
+	function send_form()
+	{
+		// $data_antrian = $this->db_model->ambil_data('syarefa')->result();
+		// echo json_encode($data_antrian);
+	}
+
+	function open_form(){
+		// $data["nama"] = $this->db_model->get_all("gcu_syamrabu")->result();
+		// $data["nama"] = $this->db_model->get_where("gcu_syamrabu", ["rule" => 2])->row_array()["nama"];
+		// $data["admin"] = $this->db_model->get_where("tbl_user", ["rule" => 2])->row_array()["nama"];
+		// $data ["nama"]= $this->session->userdata("nama");
+		//$data_antrian = $this->db_model->ambil_data('gcu_syamrabu')->result();
+		$this->load->view('form');
+	}
+
 
 	public function edit()
 	{
