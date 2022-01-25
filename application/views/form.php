@@ -27,7 +27,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
     <table class="table table-responsive borderless" style="margin-top: 50px; margin-left: auto; margin-right: auto;">
       <tr>
           <td>
-            <img style="width: 300px;" src="<?= base_url() ?>assets_admin/Bangkalan.png" alt="" />
+            <img style="width: 200px;" src="<?= base_url() ?>assets_admin/Bangkalan.png" alt="" />
           </td>
           <td style="text-align: center; font-weight: bolder;">
             <h4><b>PEMERINTAH KABUPATEN BANGKALAN</b></h4>
@@ -35,20 +35,29 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <h4><b>UOBK RSUD SYARIFAH AMBAMI RATO EBU</b></h4>
             <i style="padding-top: 0px;">Jl. Pemuda Kaffa No.9,Telp.(031) 3091111 Fax.(031) 3094108 kode pos 69112</i>
             <br><i style="padding-top: 0px;">Website www.rsabangkalan.com Email 1: eres.bangkalan@yahoo.co.id</i>
-            <i style="padding-top: 0px;">Email 2: rsudsyamrabu@bangkalankab.go.id</i>
+            <br><i style="padding-top: 0px;">Email 2: rsudsyamrabu@bangkalankab.go.id</i>
             <h5><b>BANGKALAN</b></h5>
           </td>
           <td>
           </td>
       </tr>
+      <tr>
+        <td colspan="5" style="font-weight: bold;">
+            <hr/>
+        </td>
+      </tr>
+      <tr>
+            <td colspan="3" style="text-align: center;">
+                <h5 style="margin-bottom: 0px;"><b>SURAT KETERANGAN DOKTER</b></h5>
+                <h4 style="margin-bottom: 0px;"><u><b>SEHAT JASMANI</b></u></h4>
+                <h5 style="margin-bottom: 0px;"><b>Nomor : 445.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/433.102.1/2022</b></h5>
+            </td>
+        </tr>
     </table>
     </div>
     <div class="row" style="width: 90vw;margin-left: auto; margin-right: auto;">
       <div class="col">
         <table class="table table-responsive borderless" style="margin-top: 50px; margin-left: auto; margin-right: auto;">
-          <tr>
-            <td colspan="3">Saya Yang bertanda Tangan Dibawah Ini :</td>
-          </tr>
           <tr>
             <td style="width: 200px;">Nama</td>
             <td colspan="2" id="nama">: <?= $this->session->set_userdata('nama') ?></td>
@@ -66,37 +75,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <td colspan="2">: <?= $this->session->userdata('kecamatan_pasien_gcu') ?> - <?= $this->session->userdata('kabupaten_pasien_gcu') ?></td>
           </tr>
           <tr>
-            <td colspan="3">Dengan Ini Menyatakan dengan sesungguhnya telah memberikan :</td>
+            <td colspan="3"> Dalam Pemeriksaan Kesehatan dinyatakan CUKUP SEHAT / TIDAK CUKUP SEHAT JASMANI untuk :</td>
           </tr>
           <tr>
-            <td colspan="3" class="text-center"><b>pemberkasan cpns</b></td>
+            <td colspan="3" class="text-center"><b>PEMBERKASAN CPNS</b></td>
           </tr>
           <tr>
-            <td style="width: 200px;">Terhadap :</td>
+            <td style="width: 200px;">Berat Badan :</td>
             <td colspan="2">: <?= $this->session->userdata('bb_pasien_gcu') ?></td>
           </tr>
           <tr>
-            <td style="width: 200px;">Nama :</td>
+            <td style="width: 200px;">Tinggi Badan :</td>
             <td colspan="2">: <?= $this->session->userdata('tb_pasien_gcu') ?></td>
           </tr>
           <tr>
-            <td colspan="3">Yang tujuan, sifat dan perlunya tindakan medis 
-                        tersebut diatas, serta resiko yang ditimbulkan telah cukup dijelasan oleh dokter
-                        dan telah saya mengerti seperti demikian pernyataan ini saya buat dengan penuh 
-                        kesadaran dan tanpa paksaan.</td>
+            <td style="width: 200px;">Pendengaran :</td>
+            <td colspan="2">: <?= $this->session->userdata('tb_pasien_gcu') ?></td>
+          </tr>
+          <tr>
+            <td style="width: 200px;">Warna  :</td>
+            <td colspan="2">:&nbsp; (&nbsp; <?= $this->session->userdata('tb_pasien_gcu') ?>&nbsp; ) </td>
           </tr>
           <tr>
             <td colspan="3"  class="text-right">Bangkalan, Tanggal.............Bulan.............Tahun.............</td>
           </tr>
           <tr>
-            <td class="text-center">Saksi 1</td>
+            <!-- <td class="text-center">Saksi 1</td>
             <td class="text-center">Saksi 2</td>
-            <td class="text-center">Saksi Yang Membuat Pernyataan</td>
+            <td class="text-center">Saksi Yang Membuat Pernyataan</td> -->
           </tr>
           <tr>
-            <td class="text-center">Tanda Tangan</td>
-            <td class="text-center">Tanda Tangan</td>
-            <td class="text-center">Tanda Tangan</td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center">Dokter Yang Memeriksa</td>
           </tr>
           <tr style="height: 100px;">
             <td class="text-center"></td>
@@ -104,14 +115,14 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             <td class="text-center"></td>
           </tr>
           <tr>
-            <td class="text-center">............................</td>
-            <td class="text-center">............................</td>
-            <td class="text-center"><u>dr.yulia mayasin</u></td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"><u><b>dr.yulia mayasin</b></u></td>
           </tr>
           <tr>
-            <td class="text-center">Nama Jelas</td>
-            <td class="text-center">Nama Jelas</td>
-            <td class="text-center">Nama Jelas</td>
+            <td class="text-center"></td>
+            <td class="text-center"></td>
+            <td class="text-center"><b>NIP.197207082010012<b></td>
           </tr>
         </table>
       </div>
