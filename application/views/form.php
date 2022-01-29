@@ -60,19 +60,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         <table class="table table-responsive borderless" style="margin-top: 50px; margin-left: auto; margin-right: auto;">
           <tr>
             <td style="width: 200px;">Nama</td>
-            <td colspan="2" id="nama">: <?= $this->session->set_userdata('nama') ?></td>
+            <td colspan="2" id="nama">: <?= $pasien['nama'] ?></td>
           </tr>
           <tr>
             <td style="width: 200px;">Tempat Lahir / Tanggal Lahir</td>
-            <td colspan="2">: <?= $this->session->userdata('tempat_lahir') ?> , <?= $this->session->userdata('ttl_pasien_gcu') ?></td>
+            <td colspan="2">: <?= $pasien['tempat_lahir'] ?> , <?= $pasien['ttl_pasien_gcu'] ?> </td>
           </tr>
           <tr>
             <td style="width: 200px;">Alamat</td>
-            <td colspan="2">: <?= $this->session->userdata('alamat_pasien_gcu') ?></td>
+            <td colspan="2">: <?= $pasien['alamat_pasien_gcu'] ?></td>
           </tr>
           <tr>
             <td style="width: 200px;">Kecamatan / Kab</td>
-            <td colspan="2">: <?= $this->session->userdata('kecamatan_pasien_gcu') ?> - <?= $this->session->userdata('kabupaten_pasien_gcu') ?></td>
+            <td colspan="2">: <?= $pasien['kecamatan_pasien_gcu'] ?> - <?= $pasien['kabupaten_pasien_gcu'] ?></td>
           </tr>
           <tr>
             <td colspan="3"> Dalam Pemeriksaan Kesehatan dinyatakan CUKUP SEHAT / TIDAK CUKUP SEHAT JASMANI untuk :</td>
@@ -82,19 +82,19 @@ defined('BASEPATH') OR exit('No direct script access allowed');
           </tr>
           <tr>
             <td style="width: 200px;">Berat Badan :</td>
-            <td colspan="2">: <?= $this->session->userdata('bb_pasien_gcu') ?></td>
+            <td colspan="2">:  <?= $pasien['bb_pasien_gcu'] ?></td>
           </tr>
           <tr>
             <td style="width: 200px;">Tinggi Badan :</td>
-            <td colspan="2">: <?= $this->session->userdata('tb_pasien_gcu') ?></td>
+            <td colspan="2">:  <?= $pasien['tb_pasien_gcu'] ?></td>
           </tr>
           <tr>
             <td style="width: 200px;">Pendengaran :</td>
-            <td colspan="2">: <?= $this->session->userdata('tb_pasien_gcu') ?></td>
+            <td colspan="2">:  <?= $pasien['pendengaran_pasien_gcu'] ?></td>
           </tr>
           <tr>
             <td style="width: 200px;">Warna  :</td>
-            <td colspan="2">:&nbsp; (&nbsp; <?= $this->session->userdata('tb_pasien_gcu') ?>&nbsp; ) </td>
+            <td colspan="2">:&nbsp; (&nbsp;  <?= $pasien['warna_pasien_gcu'] ?>&nbsp; ) </td>
           </tr>
           <tr>
             <td colspan="3"  class="text-right">Bangkalan, Tanggal.............Bulan.............Tahun.............</td>

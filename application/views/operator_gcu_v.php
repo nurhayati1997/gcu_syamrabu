@@ -60,25 +60,31 @@
                           <div class="card bg-secondary border-0 mb-0">
                             <div class="card-header bg-success pb-1">
                               <div class="text-muted text-center mt-2 mb-3">
-                                <span class="text-muted text-white">Form Edit Data Antrian </span>
+                                <span class="text-muted text-white">Form Tambah Diagnosa </span>
                               </div>
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
                               <form role="form">
                                 <div class="form-group mb-3">
                                   <input id="idUser" type="hidden">
-                                  <label class="form-control-label" for="exampleFormControlSelect1">Status Layanan Pasien</label>
-                                  <select class="form-control" id="editStatus">
-                                    <option value="1">Belum Dilayani</option>
-                                    <option value="2">Sedang dilayani</option>
-                                    <option value="3">ambil resep</option>
-                                    <option value="4">Selesai Sudah Ambil Obat</option>
-                                    <option value="5">Selesai Belum Ambil Obat</option>
+                                  <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
+                                  <select class="form-control" id="pendengaran_pasien_gcu">
+                                    <option value="">Pendengaran</option>
+                                    <option value="Baik">Baik</option>
+                                    <option value="Cukup Baik">Cukup Baik</option>
                                   </select>
                                 </div>
+                                  <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                      </div>
+                                      <input class="form-control" name="warna_pasien_gcu" id="warna_pasien_gcu" placeholder="Warna" type="text">
+                                    </div>
+                                  </div>
                                 <div class="badge badge-danger" id="pesanErrorEdit"></div>
                                 <div class="text-center">
-                                  <button type="button" onClick="edit()" id="tombolEdit" class="btn btn-success my-2">Edit</button>
+                                  <button type="button" onClick="edit()" id="tombolEdit" class="btn btn-success my-2">Tambah</button>
                                 </div>
                               </form>
                             </div>
@@ -135,7 +141,7 @@
         <div class="modal-header no-bd">
           <h5 class="modal-title">
             <span class="fw-mediumbold">
-              Hapus Data Master</span>
+              Hapus Data Pasien</span>
             <span class="fw-light">
               User
             </span>
@@ -204,66 +210,24 @@
 
 
   function tryCetak(id) {
-    $("#cetak" + id).html('<i class="fas fa-spinner fa-pulse"></i>')
-    $.ajax({
-      url: 'operator_gcu/dataById',
-      method: 'post',
-      data: "target=gcu_syamrabu&id=" + id,
-      dataType: 'json',
-      success: function(data) {
-        $("#id_cetak").val(id)
-        $("#teksCetak").html("apakah anda yakin ingin Mencetak  dengan nama '" + data.nama + "' ?")
-
-        $("#cetak" + id).html('<i class="fa fa-times"></i>')
-      }
-    });
-    $("#modalCetak").modal('show')
+    window.open(
+       "<?= site_url(); ?>operator_gcu/dataById/" + id);
   }
 
-  function cetak() {
-    $("#cetak").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
-    var id = $("#id_cetak").val()
-    $.ajax({
-      // url: 'operator_gcu/open_form',
-      url: 'operator_gcu/dataById',
-      method: 'post',
-      data: "target=gcu_syamrabu&id=" + id,
-      dataType: 'json',
-      success: function(data) {
-        
-        $("#id_cetak").val("")
-        $("#teksCetak").html("")
-        $("#modalCetak").modal('hide')
-        $("#Cetak").html('Cetak')
-        window.open(
-              '<?= site_url('operator_gcu/open_form') ?>',
-              '_blank'
-            );
-      }
-    });
-  }
 
-  // function printLaporan() {
-  //   $("#linkPrintLaporan").html('<i class="fas fa-spinner fa-pulse"></i> Memproses....')
-  //   var tanggalMulai = formatTanggal($("#tanggalMulai").val())
-  //   var tanggalSelesai = formatTanggal($("#tanggalSelesai").val())
-
-  //   window.open("<?= base_url("laporan_internal/printLaporan?") ?>mulai=" + tanggalMulai + "&selesai=" + tanggalSelesai)
-
-  //   $("#linkPrintLaporan").html('Print Laporan')
-  // }
 
   function tryEdit(id) {
     $("#tombolEdit" + id).html('<i class="fas fa-spinner fa-pulse"></i>')
     $("#idUser").val(id)
     $.ajax({
-      url: '<?= base_url() ?>operator/dataByid',
+      url: '<?= base_url() ?>operator_gcu/edit_id',
       method: 'post',
-      data: "target=syarefa&id=" + id,
+      data: "target=gcu_syamrabu&id=" + id,
       dataType: 'json',
       success: function(data) {
         $("#modalEdit").modal('show')
-        $("#editStatus").val(data.nama)
+        $("#pendengaran_pasien_gcu").val(data.pendengaran_pasien_gcu)
+        $("#warna_pasien_gcu").val(data.warna_pasien_gcu)
         console.log(data)
         $("#edit" + id).html('<i class="fa fa-edit"></i>')
       }
@@ -272,20 +236,23 @@
 
   function edit() {
     $("#tombolEdit").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
-    var status = $("#editStatus").val()
+    var pendengaran_pasien_gcu = $("#pendengaran_pasien_gcu").val()
+    var warna_pasien_gcu = $("#warna_pasien_gcu").val()
     var id = $("#idUser").val()
     $.ajax({
-      url: '<?= base_url() ?>operator/edit',
+      url: '<?= base_url() ?>operator_gcu/edit',
       method: 'post',
       data: {
         id: id,
-        status: status
+        pendengaran_pasien_gcu: pendengaran_pasien_gcu,
+        warna_pasien_gcu: warna_pasien_gcu
       },
       dataType: 'json',
       success: function(data) {
         if (data == "") {
           $("#idUser").val("")
-          $("#nama").val("")
+          $("#pendengaran_pasien_gcu").val("")
+          $("#warna_pasien_gcu").val("")
           $('#pesanErrorTambah').html("")
         } else {
           $('#pesanErrorEdit').html(data)
@@ -300,13 +267,13 @@
   function tryHapus(id) {
     $("#hapus" + id).html('<i class="fas fa-spinner fa-pulse"></i>')
     $.ajax({
-      url: 'operator/dataById',
+      url: 'operator_gcu/edit_id',
       method: 'post',
-      data: "target=syarefa&id=" + id,
+      data: "target=gcu_syamrabu&id=" + id,
       dataType: 'json',
       success: function(data) {
         $("#id_hapus").val(id)
-        $("#teksHapus").html("apakah anda yakin ingin menghapus Antrian '" + data.no_antrian + "'  dengan nama '" + data.nama + "' ?")
+        $("#teksHapus").html("apakah anda yakin ingin menghapus data dengan nama '" + data.nama + "' ?")
 
         $("#hapus" + id).html('<i class="fa fa-times"></i>')
       }
@@ -318,9 +285,9 @@
     $("#hapus").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
     var id = $("#id_hapus").val()
     $.ajax({
-      url: 'operator/hapus',
+      url: 'operator_gcu/hapus',
       method: 'post',
-      data: "target=syarefa&id=" + id,
+      data: "target=gcu_syamrabu&id=" + id,
       dataType: 'json',
       success: function(data) {
         $("#id_hapus").val("")

@@ -310,7 +310,7 @@
       dataType: 'json',
       success: function(data) {
         // console.log(data);
-        if (data == "") {
+        // if (data == "") {
           
           $("#nama").val("")
           $("#tempat_lahir").val("")
@@ -321,11 +321,11 @@
           $("#kabupaten_pasien_gcu").val("")
           $("#kabupaten_pasien_gcu").val("")
           $('#pesanErroTambah').html("")
-        } else {
+        // } else {
           // data = data.replace("<p>", "");
           // data = data.replace("</p>", "");
           $('#pesanErrorTambah').html(data)
-        }
+        // }
 
         $("#tombolTambah").html('Tambah')
         // $("#modalTambah").modal('hide');
