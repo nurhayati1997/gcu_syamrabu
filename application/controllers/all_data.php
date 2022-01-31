@@ -18,13 +18,13 @@ class all_data extends CI_Controller
 	{
 		// $this->load->view('dashboard_v');
 		//$this->load->view('umum_v', $data);
-		$data["total_today"] = $this->db_model->get("syarefa")->num_rows();
-		$this->template->load('template', 'all_data_v', $data);
+		// $data["total_today"] = $this->db_model->get("syarefa")->num_rows();
+		$this->template->load('template', 'all_data_v');
 	}	
 	
 	public function tampil()
 	{
-		$data_antrian = $this->db_model->all_data('syarefa')->result();
+		$data_antrian = $this->db_model->all_data('gcu_syamrabu')->result();
 		echo json_encode($data_antrian);
 		// $data_antrian = $this->db_model->ambil_data('syarefa', ["status" => $nowDate])->result();
 		// echo json_encode($data_antrian);

@@ -6,15 +6,16 @@
       <div class="header-body">
         <div class="row align-items-center py-4">
           <div class="col-lg-6 col-7">
-            <h6 class="h2 text-white d-inline-block mb-0">GCU SYAMRABU</h6>
+            <h6 class="h2 text-white d-inline-block mb-0">PSIKOLOGI SYAMRABU</h6>
             <nav aria-label="breadcrumb" class="d-none d-md-inline-block ml-md-4">
               <ol class="breadcrumb breadcrumb-links breadcrumb-dark">
                 <li class="breadcrumb-item"><a href="#"><i class="fas fa-home"></i></a></li>
-                <li class="breadcrumb-item"><a href="#">Rekap Semua Data Permintaan</a></li>
+                <li class="breadcrumb-item"><a href="#">Data Permintaan</a></li>
                 <!-- <li class="breadcrumb-item active" aria-current="page">Default</li> -->
               </ol>
             </nav>
           </div>
+          
           <!-- <div class="col-lg-6 col-5 text-right">
             <a href="#" class="btn btn-sm btn-neutral">New</a>
             <a href="#" class="btn btn-sm btn-neutral">Filters</a>
@@ -29,10 +30,21 @@
     <div class="row">
       <div class="col">
         <div class="card">
-          <div class="card-header bg-gradient-success">
+          <div class="card-header bg-gradient-info">
             <div class="row">
               <div class="col-xl-4">
               </div>
+              <!-- <div class="col-xl-4 ">
+                <div class="card card-stats">
+                  <div class="card-body">
+                    <div class="row">
+                      <div class="col lg-4">
+                        <h5 class="card-title text-uppercase text-muted text-center mb-0">Total Permintaan</h5>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div> -->
               <div class="col-xl-4 ">
               </div>
             </div>
@@ -41,7 +53,6 @@
               <div class="row">
                 <div class="col-md-4">
                 </div>
-                <div class="col-md-4">
                   <div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modal-form" aria-hidden="true">
                     <div class="modal-dialog modal- modal-dialog-centered modal-sm" role="document">
                       <div class="modal-content">
@@ -107,13 +118,40 @@
     </div>
   </div>
 
+  <div class="modal fade" id="modalCetak" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header no-bd">
+          <h5 class="modal-title">
+            <span class="fw-mediumbold">
+              Cetak Data</span>
+            <!-- <span class="fw-light">
+              User
+            </span> -->
+          </h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p id="teksCetak"></p>
+          <input type="hidden" id="id_cetak" name="id_cetak" />
+        </div>
+        <div class="modal-footer no-bd">
+          <button type="button" id="cetak" onClick="cetak()" class="btn btn-primary">Cetak</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Batal</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="modal fade" id="modalHapus" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header no-bd">
           <h5 class="modal-title">
             <span class="fw-mediumbold">
-              Hapus Data Master</span>
+              Hapus Data Pasien</span>
             <span class="fw-light">
               User
             </span>
@@ -135,6 +173,7 @@
   </div>
 
 </div>
+
 <script>
   // $(document).ready(function() {
   //   //  add_list();
@@ -147,7 +186,7 @@
     var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>Action</th><th>NO</th><th>Tanggal</th><th>Nama</th><th>Keperluan</th><th>Pendengaran</th><th>Warna</th></tr></thead><tbody>'
       $.ajax({
         type:'POST',
-        url: '<?= base_url() ?>all_data/tampil',
+        url: '<?= base_url() ?>operator_gcu/tampil',
         dataType :'json',
         success: function(data){
           // console.log(data);

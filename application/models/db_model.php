@@ -4,7 +4,7 @@ class Db_model extends CI_Model
     public function ambil_data($tabel)
     {
         $date= date('Y-m-d');
-        return $this->db->get_where($tabel, array ('tgl_input'=> $date));
+        return $this->db->get_where($tabel, array ('tgl_daftar_gcu'=> $date));
     }
     
     public function ambil_data_belumambilobat($tabel)

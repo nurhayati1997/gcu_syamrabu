@@ -34,7 +34,7 @@
             <div class="row">
               <div class="col-xl-4">
               </div>
-              <div class="col-xl-4 ">
+              <!-- <div class="col-xl-4 ">
                 <div class="card card-stats">
                   <div class="card-body">
                     <div class="row">
@@ -44,7 +44,7 @@
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="col-xl-4 ">
               </div>
             </div>
@@ -67,6 +67,16 @@
                               <form role="form">
                                 <div class="form-group mb-3">
                                   <input id="idUser" type="hidden">
+                                  <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
+                                  <select class="form-control" id="keperluan_pasien_gcu">
+                                    <option value="">Kepentingan</option>
+                                    <option value="PEMBERKASAN CPNS">Pemberkasan CPNS</option>
+                                    <option value="PEMBERKASAN P3K">Pemberkasan P3K</option>
+                                    <option value="LAIN - LAIN">Lain-Lain</option>
+                                  </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                  <!-- <input id="idUser" type="hidden"> -->
                                   <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
                                   <select class="form-control" id="pendengaran_pasien_gcu">
                                     <option value="">Pendengaran</option>
@@ -173,7 +183,7 @@
 
   function tampilkan(){
     $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>Action</th><th>NO</th><th>Tanggal</th><th>Nama</th><th>Tempat Lahir</th><th>Tanggal Lahir</th><th>Berat Badan</th><th>Tinggi Badan</th><th>Kecamatan</th><th>Kabupaten</th><th>Alamat</th></tr></thead><tbody>'
+    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>Action</th><th>NO</th><th>Tanggal</th><th>Nama</th><th>Keperluan</th><th>Pendengaran</th><th>Warna</th></tr></thead><tbody>'
       $.ajax({
         type:'POST',
         url: '<?= base_url() ?>operator_gcu/tampil',
@@ -189,13 +199,9 @@
             baris += '<td>' + (i + 1) + '</td>'
             baris += '<td>' + data[i].tgl_daftar_gcu + '</td>'
             baris += '<td>' + data[i].nama + '</td>'
-            baris += '<td>' + data[i].tempat_lahir + '</td>'
-            baris += '<td>' + data[i].ttl_pasien_gcu + '</td>'
-            baris += '<td>' + data[i].bb_pasien_gcu + '</td>'
-            baris += '<td>' + data[i].tb_pasien_gcu + '</td>'
-            baris += '<td>' + data[i].kecamatan_pasien_gcu + '</td>'
-            baris += '<td>' + data[i].kabupaten_pasien_gcu + '</td>'
-            baris += '<td>' + data[i].alamat_pasien_gcu + '</td>'
+            baris += '<td>' + data[i].keperluan_pasien_gcu + '</td>'
+            baris += '<td>' + data[i].pendengaran_pasien_gcu + '</td>'
+            baris += '<td>' + data[i].warna_pasien_gcu + '</td>'
             baris += '</td></tr>'
           }
           baris += '</tbody></table>'
@@ -226,6 +232,7 @@
       dataType: 'json',
       success: function(data) {
         $("#modalEdit").modal('show')
+        $("#keperluan_pasien_gcu").val(data.keperluan_pasien_gcu)
         $("#pendengaran_pasien_gcu").val(data.pendengaran_pasien_gcu)
         $("#warna_pasien_gcu").val(data.warna_pasien_gcu)
         console.log(data)
@@ -236,6 +243,7 @@
 
   function edit() {
     $("#tombolEdit").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
+    var keperluan_pasien_gcu = $("#keperluan_pasien_gcu").val()
     var pendengaran_pasien_gcu = $("#pendengaran_pasien_gcu").val()
     var warna_pasien_gcu = $("#warna_pasien_gcu").val()
     var id = $("#idUser").val()
@@ -244,6 +252,7 @@
       method: 'post',
       data: {
         id: id,
+        keperluan_pasien_gcu: keperluan_pasien_gcu,
         pendengaran_pasien_gcu: pendengaran_pasien_gcu,
         warna_pasien_gcu: warna_pasien_gcu
       },
@@ -251,6 +260,7 @@
       success: function(data) {
         if (data == "") {
           $("#idUser").val("")
+          $("#keperluan_pasien_gcu").val("")
           $("#pendengaran_pasien_gcu").val("")
           $("#warna_pasien_gcu").val("")
           $('#pesanErrorTambah').html("")

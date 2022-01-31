@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class operator_gcu extends CI_Controller
+class operator_psikologi extends CI_Controller
 {
 
 	function __construct()
@@ -21,7 +21,7 @@ class operator_gcu extends CI_Controller
 
 		// $data["total_today"] = $this->db_model->get("v_today")->num_rows();
 		// $this->template->load('template', 'operator_gcu_v', $data);
-		$this->template->load('template', 'operator_gcu_v');
+		$this->template->load('template', 'operator_psikologi_v');
 	}	
 	
 	public function tampil()
