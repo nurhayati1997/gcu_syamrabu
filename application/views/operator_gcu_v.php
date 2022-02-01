@@ -68,16 +68,6 @@
                                 <div class="form-group mb-3">
                                   <input id="idUser" type="hidden">
                                   <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
-                                  <select class="form-control" id="keperluan_pasien_gcu">
-                                    <option value="">Kepentingan</option>
-                                    <option value="PEMBERKASAN CPNS">Pemberkasan CPNS</option>
-                                    <option value="PEMBERKASAN P3K">Pemberkasan P3K</option>
-                                    <option value="LAIN - LAIN">Lain-Lain</option>
-                                  </select>
-                                </div>
-                                <div class="form-group mb-3">
-                                  <!-- <input id="idUser" type="hidden"> -->
-                                  <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
                                   <select class="form-control" id="pendengaran_pasien_gcu">
                                     <option value="">Pendengaran</option>
                                     <option value="Baik">Baik</option>
@@ -232,7 +222,6 @@
       dataType: 'json',
       success: function(data) {
         $("#modalEdit").modal('show')
-        $("#keperluan_pasien_gcu").val(data.keperluan_pasien_gcu)
         $("#pendengaran_pasien_gcu").val(data.pendengaran_pasien_gcu)
         $("#warna_pasien_gcu").val(data.warna_pasien_gcu)
         console.log(data)
@@ -243,7 +232,6 @@
 
   function edit() {
     $("#tombolEdit").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
-    var keperluan_pasien_gcu = $("#keperluan_pasien_gcu").val()
     var pendengaran_pasien_gcu = $("#pendengaran_pasien_gcu").val()
     var warna_pasien_gcu = $("#warna_pasien_gcu").val()
     var id = $("#idUser").val()
@@ -252,7 +240,6 @@
       method: 'post',
       data: {
         id: id,
-        keperluan_pasien_gcu: keperluan_pasien_gcu,
         pendengaran_pasien_gcu: pendengaran_pasien_gcu,
         warna_pasien_gcu: warna_pasien_gcu
       },
@@ -260,7 +247,6 @@
       success: function(data) {
         if (data == "") {
           $("#idUser").val("")
-          $("#keperluan_pasien_gcu").val("")
           $("#pendengaran_pasien_gcu").val("")
           $("#warna_pasien_gcu").val("")
           $('#pesanErrorTambah').html("")

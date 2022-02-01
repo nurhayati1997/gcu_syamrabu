@@ -94,7 +94,6 @@ class operator_gcu extends CI_Controller
 	public function edit()
 	{
 		$data = [
-			"keperluan_pasien_gcu" => $this->input->post("keperluan_pasien_gcu", TRUE),
 			"pendengaran_pasien_gcu" => $this->input->post("pendengaran_pasien_gcu", TRUE),
 			"warna_pasien_gcu" => $this->input->post("warna_pasien_gcu", TRUE)
 		];
