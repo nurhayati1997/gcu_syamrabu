@@ -134,12 +134,17 @@
       <br>
       <br>
       <br>
-      <table width="625">
+      <!-- <table width="625">
         <tr>
           <td class="text2">Bangkalan, <?= $pasien['tgl_daftar_gcu'] ?></td>
         </tr>
-      </table>
+      </table> -->
       <table width="625">
+        <tr class="text2">
+          <td></td>
+          <td width="525"></td>
+          <td width="200">&nbsp;Bangkalan, <?= $pasien['tgl_daftar_gcu'] ?></td>
+        </tr>
         <tr class="text2">
           <td>Berat Badan</td>
           <td width="525">: <?= $pasien['bb_pasien_gcu'] ?></td>
@@ -156,7 +161,11 @@
         <tr>
           <td>Warna</td>
           <td width="525">: <?= $pasien['warna_pasien_gcu'] ?></td>
-          <td>&nbsp;<u><b>dr.YULIA MAYASIN</u><br>NIP.197207082010012</b></td>
+        </tr>
+		<tr>
+          <td>Keterangan</td>
+          <td width="525">: <?= $pasien['keterangan_pasien_gcu'] ?></td>
+          <td>&nbsp;<u><b><?= $pasien['nama_dokter_gcu'] ?></u><br>&nbsp;<?= $pasien['nip_dokter_gcu'] ?></b></td>
         </tr>
       </table>
 		</table>

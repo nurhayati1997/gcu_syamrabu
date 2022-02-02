@@ -53,20 +53,40 @@
                               </div>
                             </div>
                             <div class="card-body px-lg-5 py-lg-5">
-                              <form role="form">
+                              
+                            <form role="form">
                                 <div class="form-group mb-3">
                                   <input id="idUser" type="hidden">
-                                  <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
-                                  <select class="form-control" id="keperluan_pasien_gcu">
-                                    <option value="">Kepentingan</option>
-                                    <option value="PEMBERKASAN CPNS">Pemberkasan CPNS</option>
-                                    <option value="PEMBERKASAN P3K">Pemberkasan P3K</option>
-                                    <option value="LAIN - LAIN">Lain-Lain</option>
+                                  <select class="form-control" id="nama_dokter_gcu">
+                                    <option value="">Dokter</option>
+                                    <option value="dr.YULIA MAYASIN">dr.YULIA MAYASIN</option>
+                                    <option value="dr.SRI WAHYU UTAMI">dr.SRI WAHYU UTAMI</option>
                                   </select>
                                 </div>
                                 <div class="form-group mb-3">
-                                  <!-- <input id="idUser" type="hidden"> -->
-                                  <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
+                                  <select class="form-control" id="nip_dokter_gcu">
+                                    <option value="">NIP Dokter</option>
+                                    <option value="197207082010012003">dr.YULIA | 197207082010012003</option>
+                                    <option value="196102161988022001">dr.SRI | 196102161988022001</option>
+                                  </select>
+                                </div>
+                                  <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                      </div>
+                                      <input class="form-control" name="bb_pasien_gcu" id="bb_pasien_gcu" placeholder="Berat Badan :" type="text">
+                                    </div>
+                                  </div>
+                                  <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                      </div>
+                                      <input class="form-control" name="tb_pasien_gcu" id="tb_pasien_gcu" placeholder="Tinggi Badan :" type="text">
+                                    </div>
+                                  </div>
+                                <div class="form-group mb-3">
                                   <select class="form-control" id="pendengaran_pasien_gcu">
                                     <option value="">Pendengaran</option>
                                     <option value="Baik">Baik</option>
@@ -79,6 +99,12 @@
                                         <span class="input-group-text"><i class="ni ni-badge"></i></span>
                                       </div>
                                       <input class="form-control" name="warna_pasien_gcu" id="warna_pasien_gcu" placeholder="Warna" type="text">
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="form-group mb-3">
+                                      <label class="form-control-label" for="keterangan_pasien gcu">Keterangan</label>
+                                      <textarea class="form-control" id="keterangan_pasien_gcu" rows="3"></textarea>
                                     </div>
                                   </div>
                                 <div class="badge badge-danger" id="pesanErrorEdit"></div>

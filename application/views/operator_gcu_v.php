@@ -67,7 +67,36 @@
                               <form role="form">
                                 <div class="form-group mb-3">
                                   <input id="idUser" type="hidden">
-                                  <!-- <label class="form-control-label" for="exampleFormControlSelect1">Pendengaran</label> -->
+                                  <select class="form-control" id="nama_dokter_gcu">
+                                    <option value="">Dokter</option>
+                                    <option value="dr.YULIA MAYASIN">dr.YULIA MAYASIN</option>
+                                    <option value="dr.SRI WAHYU UTAMI">dr.SRI WAHYU UTAMI</option>
+                                  </select>
+                                </div>
+                                <div class="form-group mb-3">
+                                  <select class="form-control" id="nip_dokter_gcu">
+                                    <option value="">NIP Dokter</option>
+                                    <option value="197207082010012003">dr.YULIA | 197207082010012003</option>
+                                    <option value="196102161988022001">dr.SRI | 196102161988022001</option>
+                                  </select>
+                                </div>
+                                  <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                      </div>
+                                      <input class="form-control" name="bb_pasien_gcu" id="bb_pasien_gcu" placeholder="Berat Badan :" type="text">
+                                    </div>
+                                  </div>
+                                  <div class="form-group mb-3">
+                                    <div class="input-group input-group-merge input-group-alternative">
+                                      <div class="input-group-prepend">
+                                        <span class="input-group-text"><i class="ni ni-badge"></i></span>
+                                      </div>
+                                      <input class="form-control" name="tb_pasien_gcu" id="tb_pasien_gcu" placeholder="Tinggi Badan :" type="text">
+                                    </div>
+                                  </div>
+                                <div class="form-group mb-3">
                                   <select class="form-control" id="pendengaran_pasien_gcu">
                                     <option value="">Pendengaran</option>
                                     <option value="Baik">Baik</option>
@@ -80,6 +109,12 @@
                                         <span class="input-group-text"><i class="ni ni-badge"></i></span>
                                       </div>
                                       <input class="form-control" name="warna_pasien_gcu" id="warna_pasien_gcu" placeholder="Warna" type="text">
+                                    </div>
+                                  </div>
+                                  <div class="col-12">
+                                    <div class="form-group mb-3">
+                                      <label class="form-control-label" for="keterangan_pasien gcu">Keterangan</label>
+                                      <textarea class="form-control" id="keterangan_pasien_gcu" rows="3"></textarea>
                                     </div>
                                   </div>
                                 <div class="badge badge-danger" id="pesanErrorEdit"></div>
@@ -173,7 +208,7 @@
 
   function tampilkan(){
     $("#tempatTabel").html('<i class="fas fa-spinner fa-pulse"></i> Memuat...')
-    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>Action</th><th>NO</th><th>Tanggal</th><th>Nama</th><th>Keperluan</th><th>Pendengaran</th><th>Warna</th></tr></thead><tbody>'
+    var baris = '<table class="table table-flush" id="tabelUser"><thead class="thead-light"><tr><th>Action</th><th>NO</th><th>Tanggal</th><th>Nama</th><th>Keperluan</th><th>Pendengaran</th><th>Warna</th><th>Keterangan</th></tr></thead><tbody>'
       $.ajax({
         type:'POST',
         url: '<?= base_url() ?>operator_gcu/tampil',
@@ -192,6 +227,7 @@
             baris += '<td>' + data[i].keperluan_pasien_gcu + '</td>'
             baris += '<td>' + data[i].pendengaran_pasien_gcu + '</td>'
             baris += '<td>' + data[i].warna_pasien_gcu + '</td>'
+            baris += '<td>' + data[i].keterangan_pasien_gcu + '</td>'
             baris += '</td></tr>'
           }
           baris += '</tbody></table>'
@@ -224,6 +260,11 @@
         $("#modalEdit").modal('show')
         $("#pendengaran_pasien_gcu").val(data.pendengaran_pasien_gcu)
         $("#warna_pasien_gcu").val(data.warna_pasien_gcu)
+        $("#bb_pasien_gcu").val(data.bb_pasien_gcu)
+        $("#tb_pasien_gcu").val(data.tb_pasien_gcu)
+        $("#keterangan_pasien_gcu").val(data.keterangan_pasien_gcu)
+        $("#nip_dokter_gcu").val(data.nip_dokter_gcu)
+        $("#nama_dokter_gcu").val(data.nama_dokter_gcu)
         console.log(data)
         $("#edit" + id).html('<i class="fa fa-edit"></i>')
       }
@@ -234,6 +275,11 @@
     $("#tombolEdit").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
     var pendengaran_pasien_gcu = $("#pendengaran_pasien_gcu").val()
     var warna_pasien_gcu = $("#warna_pasien_gcu").val()
+    var tb_pasien_gcu = $("#tb_pasien_gcu").val()
+    var bb_pasien_gcu = $("#bb_pasien_gcu").val()
+    var keterangan_pasien_gcu = $("#keterangan_pasien_gcu").val()
+    var nip_dokter_gcu = $("#nip_dokter_gcu").val()
+    var nama_dokter_gcu = $("#nama_dokter_gcu").val()
     var id = $("#idUser").val()
     $.ajax({
       url: '<?= base_url() ?>operator_gcu/edit',
@@ -241,14 +287,24 @@
       data: {
         id: id,
         pendengaran_pasien_gcu: pendengaran_pasien_gcu,
-        warna_pasien_gcu: warna_pasien_gcu
+        tb_pasien_gcu: tb_pasien_gcu,
+        bb_pasien_gcu: bb_pasien_gcu,
+        keterangan_pasien_gcu: keterangan_pasien_gcu,
+        warna_pasien_gcu: warna_pasien_gcu,
+        nip_dokter_gcu: nip_dokter_gcu,
+        nama_dokter_gcu: nama_dokter_gcu
       },
       dataType: 'json',
       success: function(data) {
         if (data == "") {
           $("#idUser").val("")
           $("#pendengaran_pasien_gcu").val("")
+          $("#tb_pasien_gcu").val("")
+          $("#bb_pasien_gcu").val("")
           $("#warna_pasien_gcu").val("")
+          $("#keterangan_pasien_gcu").val("")
+          $("#nip_dokter_gcu").val("")
+          $("#nama_dokter_gcu").val("")
           $('#pesanErrorTambah').html("")
         } else {
           $('#pesanErrorEdit').html(data)
