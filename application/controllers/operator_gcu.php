@@ -28,7 +28,7 @@ class operator_gcu extends CI_Controller
 	public function dataById($id)
 	{
 
-		$query = "select * from gcu_syamrabu where id=".($id);	
+		$query = "select * from v_gcu_syamrabu where id=".($id);	
 		$data ['pasien'] = $this->db_model->get_query($query)->row_array();
 		$this->load->view('form', $data);
 	}
