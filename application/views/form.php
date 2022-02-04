@@ -60,7 +60,7 @@
             <center>
               <font size="4">SURAT KETERANGAN DOKTER</font> <br>
               <font size="5"><u><b>SEHAT JASMANI</u></b></font><br>
-              <font size="4">NOMOR : 445.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/433.102.1/I/2022</font> 
+              <font size="4">NOMOR : 445.1/&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/433.102.1/II/2022</font> 
             </center>
           </td>
         </tr>
