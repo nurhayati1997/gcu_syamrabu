@@ -219,9 +219,13 @@
       dataType: 'json',
       success: function(data) {
         $("#modalEdit").modal('show')
-        $("#keperluan_pasien_gcu").val(data.keperluan_pasien_gcu)
         $("#pendengaran_pasien_gcu").val(data.pendengaran_pasien_gcu)
         $("#warna_pasien_gcu").val(data.warna_pasien_gcu)
+        $("#bb_pasien_gcu").val(data.bb_pasien_gcu)
+        $("#tb_pasien_gcu").val(data.tb_pasien_gcu)
+        $("#keterangan_pasien_gcu").val(data.keterangan_pasien_gcu)
+        $("#nip_dokter_gcu").val(data.nip_dokter_gcu)
+        $("#nama_dokter_gcu").val(data.nama_dokter_gcu)
         console.log(data)
         $("#edit" + id).html('<i class="fa fa-edit"></i>')
       }
@@ -230,26 +234,38 @@
 
   function edit() {
     $("#tombolEdit").html('<i class="fas fa-spinner fa-pulse"></i> Memproses..')
-    var keperluan_pasien_gcu = $("#keperluan_pasien_gcu").val()
     var pendengaran_pasien_gcu = $("#pendengaran_pasien_gcu").val()
     var warna_pasien_gcu = $("#warna_pasien_gcu").val()
+    var tb_pasien_gcu = $("#tb_pasien_gcu").val()
+    var bb_pasien_gcu = $("#bb_pasien_gcu").val()
+    var keterangan_pasien_gcu = $("#keterangan_pasien_gcu").val()
+    var nip_dokter_gcu = $("#nip_dokter_gcu").val()
+    var nama_dokter_gcu = $("#nama_dokter_gcu").val()
     var id = $("#idUser").val()
     $.ajax({
       url: '<?= base_url() ?>operator_gcu/edit',
       method: 'post',
       data: {
         id: id,
-        keperluan_pasien_gcu: keperluan_pasien_gcu,
         pendengaran_pasien_gcu: pendengaran_pasien_gcu,
-        warna_pasien_gcu: warna_pasien_gcu
+        tb_pasien_gcu: tb_pasien_gcu,
+        bb_pasien_gcu: bb_pasien_gcu,
+        keterangan_pasien_gcu: keterangan_pasien_gcu,
+        warna_pasien_gcu: warna_pasien_gcu,
+        nip_dokter_gcu: nip_dokter_gcu,
+        nama_dokter_gcu: nama_dokter_gcu
       },
       dataType: 'json',
       success: function(data) {
         if (data == "") {
           $("#idUser").val("")
-          $("#keperluan_pasien_gcu").val("")
           $("#pendengaran_pasien_gcu").val("")
+          $("#tb_pasien_gcu").val("")
+          $("#bb_pasien_gcu").val("")
           $("#warna_pasien_gcu").val("")
+          $("#keterangan_pasien_gcu").val("")
+          $("#nip_dokter_gcu").val("")
+          $("#nama_dokter_gcu").val("")
           $('#pesanErrorTambah').html("")
         } else {
           $('#pesanErrorEdit').html(data)
