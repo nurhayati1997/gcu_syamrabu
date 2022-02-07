@@ -164,7 +164,7 @@
 			<tr></tr>
         <tr class="text2">
           <td>Berat Badan</td>
-          <td width="">&nbsp;&nbsp;&nbsp;: <?= $pasien['bb_pasien_gcu'] ?></td>
+          <td width="">&nbsp;&nbsp;&nbsp;: <?= $pasien['bb_pasien_gcu'] ?> kg</td>
           <td width="200">Dokter Yang Memeriksa</td>
         </tr>
 			<tr></tr>
@@ -174,7 +174,7 @@
 			<tr></tr>
         <tr class="text2">
           <td width="200">Tinggi Badan</td>
-          <td width="525">&nbsp;&nbsp;&nbsp;: <?= $pasien['tb_pasien_gcu'] ?></td>
+          <td width="525">&nbsp;&nbsp;&nbsp;: <?= $pasien['tb_pasien_gcu'] ?> cm</td>
         </tr>
 			<tr></tr>
 			<tr></tr>
