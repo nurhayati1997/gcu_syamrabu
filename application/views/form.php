@@ -164,7 +164,7 @@
 			<tr></tr>
         <tr class="text2">
           <td>Berat Badan</td>
-          <td width="">&nbsp;&nbsp;&nbsp;: <?= $pasien['bb_pasien_gcu'] ?> kg</td>
+          <td width="">: <?= $pasien['bb_pasien_gcu'] ?> kg</td>
           <td width="200">Dokter Yang Memeriksa</td>
         </tr>
 			<tr></tr>
@@ -174,7 +174,7 @@
 			<tr></tr>
         <tr class="text2">
           <td width="200">Tinggi Badan</td>
-          <td width="525">&nbsp;&nbsp;&nbsp;: <?= $pasien['tb_pasien_gcu'] ?> cm</td>
+          <td width="525">: <?= $pasien['tb_pasien_gcu'] ?> cm</td>
         </tr>
 			<tr></tr>
 			<tr></tr>
@@ -183,7 +183,7 @@
 			<tr></tr>
         <tr>
           <td>Pendengaran</td>
-          <td width="525">&nbsp;&nbsp;&nbsp;: <?= $pasien['pendengaran_pasien_gcu'] ?></td>
+          <td width="525">: <?= $pasien['pendengaran_pasien_gcu'] ?></td>
         </tr>
 			<tr></tr>
 			<tr></tr>
@@ -192,7 +192,7 @@
 			<tr></tr>
         <tr>
           <td>Buta Warna</td>
-          <td width="525">&nbsp;&nbsp;&nbsp;: <?= $pasien['warna_pasien_gcu'] ?></td>
+          <td width="525">: <?= $pasien['warna_pasien_gcu'] ?></td>
         </tr>
 			<tr></tr>
 			<tr></tr>
@@ -201,7 +201,7 @@
 			<tr></tr>
 		<tr>
           <td>Keterangan</td>
-          <td width="525">&nbsp;&nbsp;&nbsp;: <?= $pasien['keterangan_pasien_gcu'] ?></td>
+          <td width="525">: <?= $pasien['keterangan_pasien_gcu'] ?></td>
           <td>&nbsp;<u><b><?= $pasien['nama_dokter_gcu'] ?></u><br>&nbsp;<?= $pasien['nip_dokter_gcu'] ?></b></td>
         </tr>
       </table>

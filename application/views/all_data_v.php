@@ -60,7 +60,7 @@
                                   <select class="form-control" id="nama_dokter_gcu">
                                     <option value="">Dokter</option>
                                     <option value="dr.YULIA MAYASIN">dr.YULIA MAYASIN</option>
-                                    <option value="dr.SRI WAHYU UTAMI">dr.SRI WAHYU UTAMI</option>
+                                    <option value="dr.SRI WAHJU UTAMI">dr.SRI WAHJU UTAMI</option>
                                   </select>
                                 </div>
                                 <div class="form-group mb-3">
